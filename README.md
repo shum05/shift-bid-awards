@@ -1,7 +1,85 @@
-# shift-bid-awards
 
+# Shift Bid Awards System
 ## Overview
 This project is designed to assign employees to shift bid awards based on their seniority and preferred shift choices. The assignment process takes into account seniority levels and ensures that each employee gets their most preferred shift, provided it is available based on the choices of more senior employees.
+
+It automates the assignment of shift bids to employees based on their seniority and preferred choices. Employees submit their shift preferences through a web form, and the application processes these requests according to their seniority level, outputting the awarded shifts to a CSV file.
+
+## Features
+
+- Allows employees to submit their shift choices online.
+- Automatically assigns shifts based on seniority order.
+- Generates a `shift_awards.csv` file with the awarded shifts and days.
+
+## Project Structure
+
+- `app.py`: Main Flask application file for handling web submissions and processing shifts.
+- `templates/index.html`: HTML template for the web form interface.
+- `data/`: Folder containing CSV files (`bids_table.csv`, `choices_table.csv`, `employee_table.csv`, `seniority_table.csv`, `shift_awards.csv`).
+- `shift_assignment.py`: Python script containing the main logic for shift assignment.
+- `README.md`: Project documentation.
+
+## Prerequisites
+
+- Python 3.7 or higher
+- Flask
+- Pandas
+
+## Setup Instructions
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/shum05/shift-bid-awards.git
+   cd shift-bid-awards
+Install dependencies:
+```
+bash
+
+pip install -r requirements.txt
+```
+Flask and Jinja2 Compatibility Issue:
+If you encounter the following error:
+```
+javascript
+
+ImportError: cannot import name 'escape' from 'jinja2'
+```
+This is due to a compatibility issue between Flask and the latest versions of Jinja2. To resolve this:
+
+Option 1: Update Flask to the latest version:
+```
+bash
+
+pip install --upgrade flask
+```
+Option 2: Downgrade Jinja2 to a compatible version:
+```
+bash
+
+pip install Jinja2==3.0.3
+```
+Option 3: Install specific compatible versions:
+```
+bash
+
+pip install flask==2.0.3 Jinja2==3.0.3
+```
+### Run the application:
+```
+bash
+
+python app.py
+```
+Access the web form: Open a browser and go to http://127.0.0.1:5000 to submit shift choices.
+
+Check output: After submission, the awarded shifts will be saved to data/shift_awards.csv.
+
+### Usage
+Employees submit their shift choices using the web form.
+The application processes the requests based on seniority.
+The resulting shift awards are saved to shift_awards.csv in the data directory.
+
+
 
 ## Features
 - **Shift Assignment**: Assigns shifts to employees according to their preferences.
