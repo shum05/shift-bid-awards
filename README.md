@@ -1,196 +1,85 @@
-
 # Shift Bid Awards System
 ## Overview
-This project is designed to assign employees to shift bid awards based on their seniority and preferred shift choices. The assignment process takes into account seniority levels and ensures that each employee gets their most preferred shift, provided it is available based on the choices of more senior employees.
+This project is designed to assign employees to shift bid awards based on their seniority and preferred shift choices. The assignment process considers seniority levels and aims to allocate each employee their most preferred shift, provided it is available based on the choices of more senior employees.
 
-It automates the assignment of shift bids to employees based on their seniority and preferred choices. Employees submit their shift preferences through a web form, and the application processes these requests according to their seniority level, outputting the awarded shifts to a CSV file.
+Employees submit their shift preferences through a web form, and the application processes these requests according to seniority, outputting the awarded shifts to a CSV file.
 
-## Features
+### Features
+Allows employees to submit their shift choices online.
+Automatically assigns shifts based on seniority order.
+Generates a shift_awards.csv file with the awarded shifts and days.
+### Project Structure
+**app.py:** Main Flask application file for handling web submissions and processing shifts.
+**templates/index.html:** HTML template for the web form interface.
+**templates/success.html:** HTML template that provides confirmation feedback to employees after they successfully submit their shift choices through the web form.
+**data/:** Folder containing CSV files (bids_table.csv, choices_table.csv, employee_table.csv, seniority_table.csv, shift_awards.csv).
+**shift_assignment.py:** Python script containing the main logic for shift assignment.
+**Getting Seniority Table from Unordered Employee Table.ipynb:** Jupyter notebook for generating seniority_table.csv from the employee_table.csv, calculating seniority based on employee hire dates.
+**README.md:** Project documentation.
+### Prerequisites
+Python 3.7 or higher
+Flask
+Pandas
+### requirements.txt File
+The requirements.txt file lists all necessary dependencies for this project:
 
-- Allows employees to submit their shift choices online.
-- Automatically assigns shifts based on seniority order.
-- Generates a `shift_awards.csv` file with the awarded shifts and days.
 
-## Project Structure
+Copy code
+Flask==2.0.3
+Jinja2==3.0.3
+pandas==1.3.3
+Each package is pinned to a specific version to avoid compatibility issues:
 
-- `app.py`: Main Flask application file for handling web submissions and processing shifts.
-- `templates/index.html`: HTML template for the web form interface.
-- `data/`: Folder containing CSV files (`bids_table.csv`, `choices_table.csv`, `employee_table.csv`, `seniority_table.csv`, `shift_awards.csv`).
-- `shift_assignment.py`: Python script containing the main logic for shift assignment.
-- `README.md`: Project documentation.
+* Flask: Web framework used to handle form submissions.
+* Jinja2: Templating engine for rendering HTML in Flask.
+* Pandas: For data manipulation and CSV processing.
+To install dependencies from this file, run:
+```
+bash
 
-## Prerequisites
+pip install -r requirements.txt
+```
+### Setup Instructions
+Clone the repository:
+```
+bash
 
-- Python 3.7 or higher
-- Flask
-- Pandas
-
-## Setup Instructions
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/shum05/shift-bid-awards.git
-   cd shift-bid-awards
+git clone https://github.com/shum05/shift-bid-awards.git
+cd shift-bid-awards
+```
 Install dependencies:
 ```
 bash
 
 pip install -r requirements.txt
 ```
-Flask and Jinja2 Compatibility Issue:
-If you encounter the following error:
-```
-javascript
-
-ImportError: cannot import name 'escape' from 'jinja2'
-```
-This is due to a compatibility issue between Flask and the latest versions of Jinja2. To resolve this:
-
-Option 1: Update Flask to the latest version:
-```
-bash
-
-pip install --upgrade flask
-```
-Option 2: Downgrade Jinja2 to a compatible version:
-```
-bash
-
-pip install Jinja2==3.0.3
-```
-Option 3: Install specific compatible versions:
-```
-bash
-
-pip install flask==2.0.3 Jinja2==3.0.3
-```
-### Run the application:
+Run the application:
 ```
 bash
 
 python app.py
 ```
-Access the web form: Open a browser and go to http://127.0.0.1:5000 to submit shift choices.
-
-Check output: After submission, the awarded shifts will be saved to data/shift_awards.csv.
+Open a browser and go to http://127.0.0.1:5000 to access the form for submitting shift choices. Upon submission, awarded shifts will be saved to data/shift_awards.csv.
 
 ### Usage
 Employees submit their shift choices using the web form.
 The application processes the requests based on seniority.
 The resulting shift awards are saved to shift_awards.csv in the data directory.
-
-
-
-## Features
-- **Shift Assignment**: Assigns shifts to employees according to their preferences.
-- **Seniority-Based Allocation**: Employees are prioritized based on their seniority (employees with lower seniority numbers are assigned first).
-- **CSV File Handling**: Takes input from CSV files, processes the assignments, and generates an output CSV file with the assigned shifts for each employee.
-
-## Files
-# Shift Bid Awards System
-
-This project automates the assignment of shift bids to employees based on their seniority and preferred choices. Employees submit their shift preferences through a web form, and the application processes these requests according to their seniority level, outputting the awarded shifts to a CSV file.
-
-## Features
-
-- Allows employees to submit their shift choices online.
-- Automatically assigns shifts based on seniority order.
-- Generates a `shift_awards.csv` file with the awarded shifts and days.
-
-## Project Structure
-
-- `app.py`: Main Flask application file for handling web submissions and processing shifts.
-- `templates/index.html`: HTML template for the web form interface.
-- `data/`: Folder containing CSV files (`bids_table.csv`, `choices_table.csv`, `employee_table.csv`, `seniority_table.csv`, `shift_awards.csv`).
-- `shift_assignment.py`: Python script containing the main logic for shift assignment.
-- `README.md`: Project documentation.
-
-## Prerequisites
-
-- Python 3.7 or higher
-- Flask
-- Pandas
-
-## Setup Instructions
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/shum05/shift-bid-awards.git
-   cd shift-bid-awards
-
-The project consists of the following files:
-- **`shift_bid_awards.py`**: The main Python script that processes the shift assignments based on input data.
-- **`choices_table.csv`**: Contains the shift preferences for each employee.
-- **`bids_table.csv`**: Contains employee shift bids, including their seniority and ranked choices.
-- **`seniority_table.csv`**: Lists employees and their corresponding seniority numbers based on hire dates.
-- **`employee_table.csv`**: Contains employee details (e.g., employee number, first and last name).
-- **`shift_awards.csv`**: The output file generated by the Python script, which contains the assigned shifts for each employee.
-
-
-## Installation
-1. Clone the repository to your local machine:
-   ```bash
-   git clone https://github.com/shum05/shift-bid-awards.git
-
-### Navigate to the project directory:
-```
-bash
-
-cd shift-bid-awards
-```
-Make sure you have Python 3.x installed. You can install the required Python dependencies using pip:
-```
-bash
-
-pip install pandas
-```
-### Usage
-Prepare your input files (choices_table.csv, bids_table.csv, seniority_table.csv, and employee_table.csv) with the appropriate data.
-
-Run the shift_bid_awards.py script:
-```
-bash
-
-python shift_bid_awards.py
-```
-The script will process the input files and generate the shift_awards.csv file, which contains the assigned shifts for each employee based on their preferences and seniority.
-
 ### Output
-The shift_awards.csv file will contain the following columns:
+The shift_awards.csv file will contain:
 
-**first_name:** The employee's first name.
-**last_name:** The employee's last name.
-**Monday:** The shift assigned for Monday.
-**Tuesday:** The shift assigned for Tuesday.
-**Wednesday:** The shift assigned for Wednesday.
-**Thursday:** The shift assigned for Thursday.
-**Friday:** The shift assigned for Friday.
-**Saturday:** The shift assigned for Saturday.
-**Sunday:** The shift assigned for Sunday.
-
+first_name: Employee's first name
+last_name: Employee's last name
+Monday to Sunday: Assigned shifts for each day
 ### Example Output
 first_name	last_name	Monday	Tuesday	Wednesday	Thursday	Friday	Saturday	Sunday
 John	Smith	MO	MO	MO	MO	MO	MO	Off
 Jane	Johnson	MO	Off	Off	MO	MO	MO	MO
-Michael	Williams	MO	MO	Off	Off	MO	MO	MO
-
 ### License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ### Contributing
-Contributions are welcome! Please feel free to open an issue or submit a pull request with any improvements or bug fixes.
+Contributions are welcome! Please feel free to open an issue or submit a pull request.
 
 ### Acknowledgments
-Thanks to pandas for providing the powerful data manipulation library used to process the shift assignment.
-markdown
-
-### Explanation of Sections:
-1. **Overview**: Provides a high-level description of the project’s functionality.
-2. **Features**: Highlights the key functionalities of the program.
-3. **Files**: Lists all files in the repository and briefly explains their purpose.
-4. **Installation**: Provides instructions to set up the project on a local machine.
-5. **Usage**: Explains how to run the Python script to process the input data and generate the output.
-6. **Output**: Describes the structure of the generated `shift_awards.csv` file.
-7. **License**: Mentions the project's license (you can update this based on your preference).
-8. **Contributing**: Encourages others to contribute to the project.
-9. **Acknowledgments**: Credits external tools or libraries used in the project, such as pandas.
+Thanks to Flask, Jinja2, and pandas for the tools used in this project.
