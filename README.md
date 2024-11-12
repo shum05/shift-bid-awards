@@ -9,13 +9,13 @@ Allows employees to submit their shift choices online.
 Automatically assigns shifts based on seniority order.
 Generates a shift_awards.csv file with the awarded shifts and days.
 ### Project Structure
-**app.py:** Main Flask application file for handling web submissions and processing shifts.
-**templates/index.html:** HTML template for the web form interface.
-**templates/success.html:** HTML template that provides confirmation feedback to employees after they successfully submit their shift choices through the web form.
-**data/:** Folder containing CSV files (bids_table.csv, choices_table.csv, employee_table.csv, seniority_table.csv, shift_awards.csv).
-**shift_assignment.py:** Python script containing the main logic for shift assignment.
-**Getting Seniority Table from Unordered Employee Table.ipynb:** Jupyter notebook for generating seniority_table.csv from the employee_table.csv, calculating seniority based on employee hire dates.
-**README.md:** Project documentation.
+- **app.py:** Main Flask application file for handling web submissions and processing shifts.
+- **templates/index.html:** HTML template for the web form interface.
+- **templates/success.html:** HTML template that provides confirmation feedback to employees after they successfully submit their shift choices through the web form.
+- **data/:** Folder containing CSV files (bids_table.csv, choices_table.csv, employee_table.csv, seniority_table.csv, shift_awards.csv).
+- **shift_assignment.py:** Python script containing the main logic for shift assignment.
+- **Getting Seniority Table from Unordered Employee Table.ipynb:** Jupyter notebook for generating seniority_table.csv from the employee_table.csv, calculating seniority based on employee hire dates.
+- **README.md:** Project documentation.
 ### Prerequisites
 Python 3.7 or higher
 Flask
