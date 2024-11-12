@@ -1,50 +1,27 @@
-# app.py
 from flask import Flask, render_template, request, redirect, url_for
 import csv
 
 app = Flask(__name__)
 
-# Load the seniority data for reference (assuming it’s available locally)
-SENIORITY_DATA_PATH = "data/seniority_table.csv"
-BIDS_TABLE_PATH = "data/bids_table.csv"
-
-def get_seniority_numbers():
-    """ Load seniority numbers from the seniority table """
-    seniority_numbers = {}
-    with open(SENIORITY_DATA_PATH, mode='r') as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            seniority_numbers[row['employee_number']] = row['seniority_number']
-    return seniority_numbers
-
 @app.route('/', methods=['GET', 'POST'])
-def submit_bid():
-    seniority_numbers = get_seniority_numbers()
+def index():
     if request.method == 'POST':
-        # Get form data
-        employee_number = request.form['employee_number']
-        choices = request.form.getlist('choices')  # Get all choices as a list
+        # Handle the form submission
+        employee_number = request.form.get('employee_number')
+        choices = request.form.get('choices')
 
-        # Determine seniority
-        seniority_number = seniority_numbers.get(employee_number)
-        if seniority_number is None:
-            return "Employee number not found. Please check and try again."
-
-        # Append data to bids_table.csv
-        with open(BIDS_TABLE_PATH, mode='a', newline='') as file:
+        # Append to the bids_table.csv file
+        with open('data/bids_table.csv', mode='a', newline='') as file:
             writer = csv.writer(file)
-            # Write employee number, seniority, and choices in sequence
-            row = [employee_number, seniority_number] + choices
-            writer.writerow(row)
+            writer.writerow([employee_number] + choices.split(','))
 
-        # Redirect to success page or display message
         return redirect(url_for('success'))
-    
-    return render_template('form.html')
+
+    return render_template('index.html')
 
 @app.route('/success')
 def success():
-    return "Thank you! Your bid choices have been successfully submitted."
+    return render_template('success.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
