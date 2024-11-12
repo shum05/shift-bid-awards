@@ -76,7 +76,7 @@ Monday to Sunday: Assigned shifts for each day
 
 | first_name | last_name | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday |
 |------------|-----------|--------|---------|-----------|----------|--------|----------|--------|
-| John       | Smith     | MO     | MO      | MO        | MO       | MO     | MO       | Off    |
+| John       | Smith     | MO     | MO      | MO        | MO       | MO     | Off      | Off    |
 | Jane       | Johnson   | MO     | Off     | Off       | MO       | MO     | MO       | MO     |
 | Michael    | Williams  | MO     | MO      | Off       | Off      | MO     | MO       | MO     |
 
