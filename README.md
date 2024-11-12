@@ -72,9 +72,14 @@ first_name: Employee's first name
 last_name: Employee's last name
 Monday to Sunday: Assigned shifts for each day
 ### Example Output
-first_name	last_name	Monday	Tuesday	Wednesday	Thursday	Friday	Saturday	Sunday
-John	Smith	MO	MO	MO	MO	MO	MO	Off
-Jane	Johnson	MO	Off	Off	MO	MO	MO	MO
+### Example Output
+
+| first_name | last_name | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday |
+|------------|-----------|--------|---------|-----------|----------|--------|----------|--------|
+| John       | Smith     | MO     | MO      | MO        | MO       | MO     | MO       | Off    |
+| Jane       | Johnson   | MO     | Off     | Off       | MO       | MO     | MO       | MO     |
+| Michael    | Williams  | MO     | MO      | Off       | Off      | MO     | MO       | MO     |
+
 ### License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
